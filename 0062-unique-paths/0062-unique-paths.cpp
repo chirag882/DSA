@@ -10,7 +10,7 @@ public:
         if(i>=n || j>=m){
             return 0;
         }
-        if(dp[i][j]!=-1){
+        if(dp[i][j]!=0){
             return dp[i][j];
         }
         else{
@@ -20,7 +20,7 @@ public:
     
     
     int uniquePaths(int m, int n) {
-        memset(dp,-1,sizeof(dp));
+        // memset(dp,0,sizeof(dp));
         return countPaths(0,0,m,n);
     }
 };
