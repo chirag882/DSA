@@ -35,33 +35,33 @@ public:
         int m = t.size();
         // return rec(n,m,s,t);
 
-        vector<vector<int>> dp(n+1,vector<int>(m+1));
-        for(int i=0;i<=n;i++){
-            dp[i][0] = i;
-        }   
+        // vector<vector<int>> dp(n+1,vector<int>(m+1));
+        vector<int> prev(m+1),curr(m+1);
         for(int i=0;i<=m;i++){
-            dp[0][i] = i;
+            prev[i] = i;
         }
 
         for(int i=1;i<=n;i++){
+            curr[0] = i;
             for(int j=1;j<=m;j++){
                 int ans = 1e9;
                 if(s[i-1] == t[j-1]){
-                    ans = min(ans,dp[i-1][j-1]);
+                    ans = min(ans,prev[j-1]);
                 }else{
                     // remove 
-                    ans = min(ans,1+dp[i-1][j]);
+                    ans = min(ans,1+prev[j]);
                     // insert
-                    ans = min(ans,1+dp[i][j-1]);
+                    ans = min(ans,1+curr[j-1]);
                     // replace
-                    ans = min(ans,1+dp[i-1][j-1]);
+                    ans = min(ans,1+prev[j-1]);
                 }
                 // save n return
-                dp[i][j] = ans;
+                curr[j] = ans;
             }
+            prev = curr;
         }
 
-        return dp[n][m];
+        return prev[m];
 
     }
 };
