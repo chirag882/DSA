@@ -66,7 +66,7 @@ public:
                 if(s[i-1] == t[j-1] || t[j-1] == '?'){
                     ans |= dp[i-1][j-1];
                 }
-                if(t[j-1] == '*'){
+                else if(t[j-1] == '*'){
                     ans |= dp[i-1][j-1];
                     ans |= dp[i-1][j];
                     ans |= dp[i][j-1];
