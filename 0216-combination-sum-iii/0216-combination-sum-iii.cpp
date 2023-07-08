@@ -3,9 +3,6 @@ public:
 
     void rec(int i,vector<int> &temp,int grp,int k,int n,vector<vector<int>> &ans){
         //base 
-        if(i > 10){
-            return;
-        }
         if(grp == k){
             int sum = 0;
             for(auto it : temp){
@@ -19,6 +16,10 @@ public:
         if(grp > k){
             return;
         }
+        if(i > 9){
+            return;
+        }
+        
         // comupte
         // take
         temp.push_back(i);
