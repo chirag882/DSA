@@ -37,10 +37,7 @@ public:
         if (l > r)  return INT_MIN;
         if (l == r)  return v[l];
         int idx = query(1,0,n-1,l,r);
-        if(idx != -1){
-            return max({rec(l,idx-1,v),rec(idx+1,r,v),v[idx]*(r-l+1)});
-        }
-        return INT_MIN;
+        return max({rec(l,idx-1,v),rec(idx+1,r,v),v[idx]*(r-l+1)});
     }
     int largestRectangleArea(vector<int>& h) {
         n = h.size();
