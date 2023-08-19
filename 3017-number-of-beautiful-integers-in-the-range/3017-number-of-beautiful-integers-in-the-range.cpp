@@ -22,6 +22,7 @@ public:
             if(iszero && i == 0){
                 ans += rec(idx+1,newtight,sum,even,odd,s,iszero);
             }else{
+                int newmod = (sum*10+i) % k;
                 int newodd = odd;
                 int neweven = even;
                 if(i % 2){
@@ -29,7 +30,7 @@ public:
                 }else{
                     neweven++;
                 }
-                ans += rec(idx+1,newtight,(sum*10+i) % k,neweven,newodd,s,0);
+                ans += rec(idx+1,newtight,newmod,neweven,newodd,s,0);
             }
         } 
         return dp[idx][tight][sum][even][odd][iszero] = ans;
