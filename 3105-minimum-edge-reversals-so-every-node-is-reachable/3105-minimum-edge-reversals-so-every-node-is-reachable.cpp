@@ -16,7 +16,7 @@ public:
     void dfs2(int node,int parent,vector<vector<pair<int,int>>> &g){
         for(auto it : g[node]){
             if(it.first == parent)continue;
-            dp2[it.first] = dp1[it.first] + (it.second^1) + dp2[node] - it.second - dp1[it.first];
+            dp2[it.first] =  (it.second^1) + dp2[node] - it.second;
             dfs2(it.first,node,g);
         }
     }
